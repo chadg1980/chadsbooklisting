@@ -13,8 +13,7 @@ public class Book {
     private String[] mAuthors;
     private String mTitle;
     private String mPublishDate;
-    private Uri mThumbnail;
-
+    private String mThumbnail;
 
     /**
      * @param authors is an array of authors of the book
@@ -23,9 +22,9 @@ public class Book {
      * @param thumbnail is a link to a thumbnail image of the book
      * **/
 
-    public Book(String title, String[] authors,  String publishDate, Uri thumbnail){
-        this.mAuthors = authors;
+    public Book(String title, String[] authors,  String publishDate, String thumbnail){
         this.mTitle = title;
+        this.mAuthors = authors;
         this.mPublishDate = publishDate;
         this.mThumbnail = thumbnail;
     }
@@ -42,7 +41,7 @@ public class Book {
         return mPublishDate;
     }
 
-    public Uri getmThumbnail() {
+    public String getmThumbnail() {
         return mThumbnail;
     }
 }

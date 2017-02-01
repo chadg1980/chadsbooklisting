@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static com.h.chad.chadsbooklisting.R.id.thumbNail;
 
@@ -48,12 +49,10 @@ public class BookAdapter extends ArrayAdapter<Book> {
         //set the title of the book to the textview
         titleTextView.setText(currentBook.getmTitle());
 
-
-        //Aurhtors is an array, we need to check if there are multiple authors
+        //Aurhtors is an array
         String [] authorsArray = currentBook.getmAuthors();
-
         TextView authorTextView = (TextView)listItemView.findViewById(R.id.authors);
-        authorTextView.setText(authorsArray.toString());
+        authorTextView.setText(Arrays.toString(authorsArray).replaceAll("\\[|\\]", ""));
 
         //Find the TextView in the book_item with the id title
         TextView publishDateTextView = (TextView) listItemView.findViewById(R.id.year);
@@ -61,8 +60,9 @@ public class BookAdapter extends ArrayAdapter<Book> {
         publishDateTextView.setText(" - " + currentBook.getmPublishDate());
 
         //Find the imageview for the thumbnail
-        ImageView thumbnailImage = (ImageView)listItemView.findViewById(thumbNail);
-        thumbnailImage.setImageURI(currentBook.getmThumbnail());
+        ImageView thumbnail = (ImageView)listItemView.findViewById(R.id.thumbNail);
+        String urlofImage = currentBook.getmThumbnail();
+        new GetImage(urlofImage, thumbnail);
 
         return listItemView;
     }

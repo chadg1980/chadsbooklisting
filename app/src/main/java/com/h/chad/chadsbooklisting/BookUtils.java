@@ -158,8 +158,7 @@ public class BookUtils {
                 String title = bookInfo.getString("title");
                 String year = bookInfo.getString("publishedDate");
                 String thumbString = thumbnailObject.getString("thumbnail");
-                Uri thumbnailURI = Uri.parse(thumbString);
-                Book addBook = new Book(title, authors, year, thumbnailURI);
+                Book addBook = new Book(title, authors, year, thumbString);
                 books.add(addBook);
             }
         }catch (JSONException e){
