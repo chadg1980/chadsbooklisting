@@ -9,12 +9,10 @@
     <ImageView
         android:id="@+id/thumbNail"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-
-        />
+        android:layout_height="100dp" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -24,21 +22,21 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="bottom"
             android:maxLines="2"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginLeft="20dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="40dp"
             android:layout_marginRight="20dp"
-            android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -57,14 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:maxLines="2"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-
-                />
-
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
         </LinearLayout>
-
-
     </LinearLayout>
-
-
 </LinearLayout>

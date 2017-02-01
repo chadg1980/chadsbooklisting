@@ -20,22 +20,22 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
  * Created by chad on 2/1/2017.
  */
 
-class GetImage{
+class GetImage {
     public static final String LOG_TAG = BookAdapter.class.getSimpleName();
     String mUrl;
     ImageView mIm;
 
-    public GetImage(String url, ImageView im){
+    public GetImage(String url, ImageView im) {
         this.mUrl = url;
         this.mIm = im;
         new GetImage.DownloadImageTask(im).execute(url);
     }
 
 
-    private static class DownloadImageTask extends AsyncTask<String, Void, Bitmap>{
+    private static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView mImageView;
 
-        public DownloadImageTask(ImageView thisImageView){
+        public DownloadImageTask(ImageView thisImageView) {
             this.mImageView = thisImageView;
         }
 
@@ -43,15 +43,16 @@ class GetImage{
         protected Bitmap doInBackground(String... urls) {
             String urlDisplay = urls[0];
             Bitmap thumb = null;
-            try{
+            try {
                 InputStream in = new java.net.URL(urlDisplay).openStream();
                 thumb = BitmapFactory.decodeStream(in);
-            }catch (Exception e){
-                Log.i(LOG_TAG, "#############", e);
+            } catch (Exception e) {
+                Log.i(LOG_TAG, "Bitmap Do In Background", e);
             }
             return thumb;
         }
-        protected void onPostExecute(Bitmap result){
+
+        protected void onPostExecute(Bitmap result) {
             mImageView.setImageBitmap(result);
         }
     }

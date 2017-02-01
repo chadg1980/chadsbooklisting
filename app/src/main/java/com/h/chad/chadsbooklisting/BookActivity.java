@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -44,10 +45,19 @@ public class BookActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Create a new intent to open the list
-                Intent BookListUiIntent = new Intent(BookActivity.this, BookListUiActivity.class);
-                //Start the new activity
-                startActivity(BookListUiIntent);
+                //get the query from the user input
+                EditText editText = (EditText) findViewById(R.id.textSearch);
+                String query = editText.getText().toString();
+                if (query.length() > 0) {
+
+                    //Create a new intent to open the list
+                    Intent BookListUiIntent = new Intent(BookActivity.this, BookListUiActivity.class);
+                    //send the query string to the intent BookListUiActivity
+                    BookListUiIntent.putExtra("queryString", query);
+
+                    //Start the new activity
+                    startActivity(BookListUiIntent);
+                }
             }
         });
 

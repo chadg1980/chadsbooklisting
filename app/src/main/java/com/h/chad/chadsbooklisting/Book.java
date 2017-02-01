@@ -11,27 +11,28 @@ import static android.R.attr.thumbnail;
 
 public class Book {
 
+    private static final String LOG_TAG = Book.class.getSimpleName();
     private String[] mAuthors;
     private String mTitle;
     private String mPublishDate;
     private String mThumbnail;
     private boolean hasAuthor;
-    private static final String LOG_TAG = Book.class.getSimpleName();
 
     /**
-     * @param authors is an array of authors of the book
-     * @param title is the title of the book
+     * @param authors     is an array of authors of the book
+     * @param title       is the title of the book
      * @param publishDate is the year the book was pubslished
-     * @param thumbnail is a link to a thumbnail image of the book
-     * **/
+     * @param thumbnail   is a link to a thumbnail image of the book
+     **/
 
-    public Book(String title, String[] authors,  String publishDate, String thumbnail){
+    public Book(String title, String[] authors, String publishDate, String thumbnail) {
         this.mTitle = title;
         this.mAuthors = authors;
         this.mPublishDate = publishDate;
         this.mThumbnail = thumbnail;
     }
-    public Book(String title,  String publishDate, String thumbnail){
+
+    public Book(String title, String publishDate, String thumbnail) {
         this.mTitle = title;
         this.mPublishDate = publishDate;
         this.mThumbnail = thumbnail;
@@ -54,9 +55,8 @@ public class Book {
         return mThumbnail;
     }
 
-    public boolean isHasAuthor(){
+    public boolean isHasAuthor() {
         return (mAuthors != null);
-
 
 
     }

@@ -23,21 +23,22 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
     private static final String LOG_TAG = BookAdapter.class.getSimpleName();
 
-    public BookAdapter(Activity context, ArrayList<Book> book){
+    public BookAdapter(Activity context, ArrayList<Book> book) {
         super(context, 0, book);
     }
+
     /**
      * provide an adapter for the listview
-     * @param position position in the list
-     * @param convertView the recycle view to populate
-     * @param parent the parent viewgroup
      *
-     * **/
+     * @param position    position in the list
+     * @param convertView the recycle view to populate
+     * @param parent      the parent viewgroup
+     **/
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
 
-        if (listItemView == null){
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.book_item, parent, false);
         }
@@ -62,7 +63,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
         publishDateTextView.setText(" - " + currentBook.getmPublishDate());
 
         //Find the imageview for the thumbnail
-        ImageView thumbnail = (ImageView)listItemView.findViewById(R.id.thumbNail);
+        ImageView thumbnail = (ImageView) listItemView.findViewById(R.id.thumbNail);
         String urlofImage = currentBook.getmThumbnail();
         new GetImage(urlofImage, thumbnail);
 
