@@ -1,6 +1,7 @@
 package com.h.chad.chadsbooklisting;
 
 import android.net.Uri;
+import android.util.Log;
 
 import static android.R.attr.thumbnail;
 
@@ -14,6 +15,8 @@ public class Book {
     private String mTitle;
     private String mPublishDate;
     private String mThumbnail;
+    private boolean hasAuthor;
+    private static final String LOG_TAG = Book.class.getSimpleName();
 
     /**
      * @param authors is an array of authors of the book
@@ -27,6 +30,12 @@ public class Book {
         this.mAuthors = authors;
         this.mPublishDate = publishDate;
         this.mThumbnail = thumbnail;
+    }
+    public Book(String title,  String publishDate, String thumbnail){
+        this.mTitle = title;
+        this.mPublishDate = publishDate;
+        this.mThumbnail = thumbnail;
+        this.mAuthors = new String[0];
     }
 
     public String[] getmAuthors() {
@@ -43,5 +52,12 @@ public class Book {
 
     public String getmThumbnail() {
         return mThumbnail;
+    }
+
+    public boolean isHasAuthor(){
+        return (mAuthors != null);
+
+
+
     }
 }

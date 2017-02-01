@@ -50,10 +50,12 @@ public class BookAdapter extends ArrayAdapter<Book> {
         titleTextView.setText(currentBook.getmTitle());
 
         //Aurhtors is an array
-        String [] authorsArray = currentBook.getmAuthors();
-        TextView authorTextView = (TextView)listItemView.findViewById(R.id.authors);
-        authorTextView.setText(Arrays.toString(authorsArray).replaceAll("\\[|\\]", ""));
-
+        //check if there is an author
+        if (currentBook.isHasAuthor()) {
+            String[] authorsArray = currentBook.getmAuthors();
+            TextView authorTextView = (TextView) listItemView.findViewById(R.id.authors);
+            authorTextView.setText(Arrays.toString(authorsArray).replaceAll("\\[|\\]", ""));
+        }
         //Find the TextView in the book_item with the id title
         TextView publishDateTextView = (TextView) listItemView.findViewById(R.id.year);
         //set the title of the book to the textview

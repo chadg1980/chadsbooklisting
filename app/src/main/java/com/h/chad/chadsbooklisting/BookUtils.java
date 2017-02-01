@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.R.attr.author;
+import static android.R.attr.id;
 import static android.R.attr.thumbnail;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static android.os.Build.VERSION_CODES.M;
@@ -137,29 +138,47 @@ public class BookUtils {
 
             for(int i = 0; i < itemsArray.length(); i++) {
                 JSONObject book = itemsArray.getJSONObject(i);
+                JSONArray authorsArray = null;
+                int authorsLen = 0;
                 JSONObject bookInfo = book.getJSONObject("volumeInfo");
                 //get the thumbnail image
                 JSONObject thumbnailObject = bookInfo.getJSONObject("imageLinks");
 
-
                 //Getting the Authors information from the authors array
-                JSONArray authorsArray = bookInfo.getJSONArray("authors");
-                int authorsLen = authorsArray.length();
-                String[] authors = new String[authorsLen];
-                if (authorsLen > 0) {
-
-                    for (int j = 0; j < authorsLen; j++) {
-                        authors[j] = authorsArray.getString(j);
-                    }
-                }else{
-                    authors[0] = authorsArray.getString(0);
+                if (bookInfo.has("authors")) {
+                     authorsArray = bookInfo.getJSONArray("authors");
+                     authorsLen = authorsArray.length();
                 }
 
+                if(authorsLen != 0) {
+                    String[] authors = new String[authorsLen];
+                    if (authorsLen > 1) {
+
+                        for (int j = 0; j < authorsLen; j++) {
+                            authors[j] = authorsArray.getString(j);
+                        }
+                    } else {
+                        authors[0] = authorsArray.getString(0);
+                    }
+                    String title = bookInfo.getString("title");
+                    String year = bookInfo.getString("publishedDate");
+                    String thumbString = thumbnailObject.getString("thumbnail");
+                    Book addBook = new Book(title, authors, year, thumbString);
+                    books.add(addBook);
+                }else{
+                    String title = bookInfo.getString("title");
+                    String year = bookInfo.getString("publishedDate");
+                    String thumbString = thumbnailObject.getString("thumbnail");
+                    Book addBook = new Book(title, year, thumbString);
+                    books.add(addBook);
+                }
+                /*
                 String title = bookInfo.getString("title");
                 String year = bookInfo.getString("publishedDate");
                 String thumbString = thumbnailObject.getString("thumbnail");
                 Book addBook = new Book(title, authors, year, thumbString);
                 books.add(addBook);
+                */
             }
         }catch (JSONException e){
             Log.e(LOG_TAG, "Error parsing json", e);

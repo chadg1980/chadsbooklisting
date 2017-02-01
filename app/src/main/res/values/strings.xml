@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Chads Book Listing</string>
+    <string name="searchButton">Search</string>
 </resources>
