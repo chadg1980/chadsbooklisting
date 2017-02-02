@@ -2,5 +2,5 @@
     <string name="app_name">Chads Book Listing</string>
     <string name="searchButton">Search</string>
     <string name="noNetwork">No Internet Connection</string>
-    <string name="howToSearch">Search Google's index of full-text books.</string>
+    <string name="howToSearch">Search Google\'s index of full-text books.</string>
 </resources>
